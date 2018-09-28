@@ -30,7 +30,7 @@ public class SpringFoxConfig {
 	@Bean
 	public Docket apiDocket() {
 		return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.any())
-				.paths(PathSelectors.ant("/api/**")).build().apiInfo(getApiInfo())
+				.paths(PathSelectors.ant("/v1/api/**")).build().apiInfo(getApiInfo())
 				.tags(new Tag("Employee Entity", "Repository for Employee entities"));
 	}
 }
