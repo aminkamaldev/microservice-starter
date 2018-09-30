@@ -10,7 +10,7 @@ spring:
     url: jdbc:mysql://localhost:3306/mydatabase?useSSL=false
     username: root
     password: masterkey
-    initialize: true
+    initialize: false
   data:
     rest:
       base-path: /v1/api
@@ -18,15 +18,15 @@ spring:
     hibernate:
       ddl-auto: create
     show-sql: true
-
 ---
 spring:
-  profiles: production
+  profiles: preproduction
   datasource:
     username: root
     password: masterkey
     url: jdbc:mysql://192.168.99.100:3306/mydatabase?useSSL=false&allowPublicKeyRetrieval=true
     driver-class-name: com.mysql.jdbc.Driver
+    initialize: true
     
   data:
     rest:
@@ -35,6 +35,29 @@ spring:
     show-sql: false
     hibernate:
       ddl-auto: update
+      naming:
+        strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+
+---
+spring:
+  profiles: production
+  datasource:
+    username: root
+    password: masterkey
+    url: jdbc:mysql://mysqlprod:3306/mydatabase
+    driver-class-name: com.mysql.jdbc.Driver
+    initialize: true
+    
+  data:
+    rest:
+      base-path: /v1/api
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: none
       naming:
         strategy: org.hibernate.cfg.ImprovedNamingStrategy
     properties:
