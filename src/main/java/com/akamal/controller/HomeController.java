@@ -11,6 +11,6 @@ public class HomeController {
 
 	@GetMapping("/")
 	public String home() throws UnknownHostException {
-		return "Bienvenue sur le microservice : " + InetAddress.getLocalHost().getHostAddress();
+		return "Bienvenue sur le microservice starter : " + InetAddress.getLocalHost().getHostAddress();
 	}
 }

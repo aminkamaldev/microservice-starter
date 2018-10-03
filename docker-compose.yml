@@ -20,3 +20,4 @@ services:
       - DATABASE_PASSWORD=masterkey
       - DATABASE_NAME=mydatabase
       - DATABASE_PORT=3306
+      - SPRING_PROFILES_ACTIVE=production
